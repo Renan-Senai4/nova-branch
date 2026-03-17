@@ -1,0 +1,29 @@
+.supernova-app {
+  display: flex;
+  min-height: 100vh;
+}
+
+.supernova-main {
+  display: flex;
+  flex-direction: column;
+}
+
+.supernova-content {
+  padding: 40px;
+
+
+}
+
+
+.section-title {
+  margin-bottom: 25px;
+  border-left: 4px solid red;
+  padding-left: 15px;
+
+}
+
+.supernova-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
