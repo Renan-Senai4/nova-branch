@@ -4,6 +4,7 @@
   overflow: hidden;
   border: 1px solid #334155;
   transition: 0.3s;
+   
 }
 
 .supernova-card:hover {
@@ -28,3 +29,4 @@
   justify-content: center;
   gap: 8px;
 }
+
