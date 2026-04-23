@@ -1,29 +1,36 @@
-.supernova-app {
-  display: flex;
-  min-height: 100vh;
+.vortex-app {
+    display: flex;
+    height: 100vh;
+    width: 100%;
 }
 
-.supernova-main {
-  display: flex;
-  flex-direction: column;
+.vortex-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
 }
 
-.supernova-content {
-  padding: 40px;
-
-
+.vortex-content {
+    padding: 40px;
+    overflow-y: auto;
+    flex: 1;
 }
-
 
 .section-title {
-  margin-bottom: 25px;
-  border-left: 4px solid red;
-  padding-left: 15px;
-
+    margin-bottom: 25px;
+    border-left: 4px solid #ef4444;
+    padding-left: 15px;
 }
 
-.supernova-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 20px;
+.search-label {
+    margin-bottom: 20px;
+    color: #94a3b8;
+    font-size: 0.95rem;
+}
+
+.vortex-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
 }

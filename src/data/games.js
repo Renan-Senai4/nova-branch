@@ -1,20 +1,13 @@
-import Disfigure from "../assets/img/disfigure.jpg";
-import Mirror_Edge from "../assets/img/mirrors-edge.png";
-import Half_life from "../assets/img/Half-life.jpg";
-import Etterna from "../assets/img/Etterna.png";
-import Ultrakill from "../assets/img/Ultrakill.png";
-import Stray from "../assets/img/Stray.jpg";
-import TF2 from "../assets/img/TF2.png";
-import Yomi_Hustle from "../assets/img/YOMI-Hustle.jpg";
+import Kuchi1 from "../assets/img/kuchi1.jpg";
+import Kuchi2 from "../assets/img/kuchi2.jpg";
+import Kuchi6 from "../assets/img/kuchi6.jpg";
+import Kuchi5 from "../assets/img/Kuchi5.jpg";
+import Kuchi4 from "../assets/img/Kuchi4.jpg";
 
-export const gameData = [
-    {id:1, title: "Disfigure", category: "Survival", banner: Disfigure},
-    {id:2, title: "Mirror_Edge", category: "action-adventure", banner: Mirror_Edge},
-    {id:3, title: "Half-Life", category: "action and adventure ", banner: Half_life},
-    {id:4, title: "Stray", category: " adventure", banner: Stray},
-    {id:5, title: "Ultrakill", category: "Fast-paced", banner: Ultrakill},
-    {id:6, title: "TF2", category: "Shotter", banner: TF2},
-    {id:7, title: "Your only move is Hustle", category: "Turn-based", banner: Yomi_Hustle},
-    {id:8, title: "Etterna", category: "Rhythm", banner: Etterna},
 
+export const kuchiData = [
+    {id:1, title: "Salgados", category: "R$7.30 até R$14.45", banner: Kuchi6},
+    {id:2, title: "Almoço", category: "R$18.30 até R$32.00", banner: Kuchi2},
+    {id:3, title: "Self-Service", category: "R$13,23 por kilo ", banner: Kuchi1},
+    {id:4, title: "Sobremesas", category: "R$5.00 até R$10.00", banner: Kuchi5},
 ]

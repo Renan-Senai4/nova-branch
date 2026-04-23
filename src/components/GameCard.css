@@ -1,14 +1,14 @@
-.supernova-card {
-  background-color: #1e293b;
+.vortex-card {
+  background-color: #db4242;
   border-radius: 12px;
   overflow: hidden;
-  border: 1px solid #334155;
+  border: 1px solid none;
   transition: 0.3s;
 }
 
-.supernova-card:hover {
+.vortex-card:hover {
   transform: translateY(-5px);
-  border-color: #7c3aed;
+  border-color: #9585b1;
 }
 
 .card-img { width: 100%; height: 140px; object-fit: cover; }
@@ -18,7 +18,7 @@
 .play-btn {
   width: 100%;
   padding: 10px;
-  background: #7c3aed;
+  background: #ffffff;
   color: white;
   border: none;
   border-radius: 8px;
@@ -28,3 +28,4 @@
   justify-content: center;
   gap: 8px;
 }
+
