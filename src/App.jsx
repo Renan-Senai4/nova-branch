@@ -1,56 +1,170 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Sidebar } from "./components/Sidebar";
-import { Dashboard } from "./components/Dashboard";
-import { Favorites } from "./components/Favorites";
-import { Profile } from "./components/Profile";
+import { Header } from "./components/Header";
 import { kuchiData } from "./data/games.js";
+import { FoodCard } from "./components/FoodCard";
+import { FoodModal } from "./components/FoodModal.jsx";
+import Slider from "./components/Slider";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { SwiperSlide } from "swiper/react";
+import { toast, ToastContainer } from "react-toastify";
 import "./App.css";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
-  const [activeTab, setActiveTab] = useState("dash");
   const [search, setSearch] = useState("");
+  const [activeTab, setActiveTab] = useState("dash");
   const [favorites, setFavorites] = useState([]);
+  const [selectedFood, setSelectedFood] = useState(null);
 
-  const filteredGames = kuchiData.filter((game) =>
-    game.title.toLowerCase().includes(search.toLowerCase()),
-  );
-
-  const addToFavorites = (game) => {
-    setFavorites((prev) => {
-      const exists = prev.find((fav) => fav.id === game.id);
-      if (exists) {
-        return prev.filter((fav) => fav.id !== game.id);
-      }
-      return [...prev, game];
-    });
+  const SliderSettings = {
+    slidesPerView: 1,
+    spaceBetween: 0,
+    loop: true,
+    speed: 1000,
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: false,
+    },
+    pagination: { clickable: true },
+    navigation: true,
   };
 
-  return (
-    <div className="vortex-app">
-      <Sidebar
-        activeTab={activeTab}
-        setActiveTab={setActiveTab}
-        search={search}
-        setSearch={setSearch}
-      />
+  // itens favoritos (objetos) resolvidos a partir dos ids do state
+  const favoriteItems = favorites
+    .map((id) => kuchiData.find((p) => String(p.id) === String(id)))
+    .filter(Boolean);
 
-      <main className="vortex-main">
-        <div className="vortex-content">
+  const filteredFood = kuchiData
+    .filter(
+      (product) =>
+        activeTab === "dash" || favorites.map(String).includes(String(product.id))
+    )
+    .filter((product) =>
+      product.title.toLowerCase().includes(search.toLowerCase())
+    );
+
+  const toggleFavorite = (id) => {
+    const food = kuchiData.find((g) => String(g.id) === String(id));
+    const foodTitle = food ? food.title : "Comida";
+    const isFavorite = favorites.map(String).includes(String(id));
+
+    if (isFavorite) {
+      toast.info(`${foodTitle} Removido do carrinho`, { theme: "dark" });
+      setFavorites((prev) => prev.filter((favId) => String(favId) !== String(id)));
+    } else {
+      toast.success(`${foodTitle} Adicionado ao carrinho`, { theme: "dark" });
+      setFavorites((prev) => [...prev, id]);
+    }
+  };
+
+  useEffect(() => {
+    AOS.init({ duration: 800 });
+  }, []);
+
+  return (
+    <div className="kuchi-app">
+      <Sidebar activeTab={activeTab} setActiveTab={setActiveTab} />
+
+      <main className="kuchi-main">
+        <Header search={search} setSearch={setSearch} />
+
+        {activeTab === "dash" && (
+          <div className="container-slider">
+            <Slider settings={SliderSettings}>
+              {kuchiData.map((slide) => (
+                <SwiperSlide key={slide.id}>
+                  <div className="slide-content">
+                    <img src={slide.banner} alt={slide.title} />
+                    <div
+                      className="slide-overlay"
+                      style={{ borderBottom: `8px solid ${slide.color}` }}
+                    >
+                      <span>{slide.title}</span>
+                    </div>
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Slider>
+          </div>
+        )}
+
+        <div className="kuchi-content">
           <h2 className="section-title">
-            {activeTab === "dash" && "Refeições"}
-            {activeTab === "favorites" && "Pedidos"}
+            {activeTab === "dash" && "Dashboard"}
+            {activeTab === "favorites" && "Favoritos"}
             {activeTab === "profile" && "Perfil"}
           </h2>
 
-          {activeTab === "dash" && (
-            <Dashboard filteredGames={filteredGames} onAddToFavorites={addToFavorites} favorites={favorites} />
-          )}
-          {activeTab === "favorites" && (
-            <Favorites favorites={favorites} />
-          )}
-          {activeTab === "profile" && <Profile />}
+          <p>{search ? `Resultados para: ${search}` : "Cardapio"}</p>
+
+          <div className="kuchi-grid">
+            {activeTab === "favorites" ? (
+              favoriteItems.length > 0 ? (
+                favoriteItems.map((g, index) => (
+                  <FoodCard
+                    key={g.id}
+                    title={g.title}
+                    category={g.category}
+                    banner={g.banner}
+                    index={index}
+                    isFavorite={true}
+                    onFavorite={() => toggleFavorite(g.id)}
+                    onPlay={() => setSelectedFood(g)}
+                  />
+                ))
+              ) : (
+                <p
+                  style={{
+                    color: "#94a3b8",
+                    gridColumn: "1/-1",
+                    textAlign: "center",
+                    marginTop: "40px",
+                  }}
+                >
+                  você ainda não adicionou nehum pedido a seu carrinho.
+                </p>
+              )
+            ) : filteredFood.length > 0 ? (
+              filteredFood.map((product, index) => (
+                <FoodCard
+                  key={product.id}
+                  title={product.title}
+                  category={product.category}
+                  banner={product.banner}
+                  index={index}
+                  isFavorite={favorites.map(String).includes(String(product.id))}
+                  onFavorite={() => toggleFavorite(product.id)}
+                  onPlay={() => setSelectedFood(product)}
+                />
+              ))
+            ) : (
+              <p
+                style={{
+                  color: "#94a3b8",
+                  gridColumn: "1/-1",
+                  textAlign: "center",
+                  marginTop: "40px",
+                }}
+              >
+                Nenhum Pedido.
+              </p>
+            )}
+          </div>
         </div>
       </main>
+
+      <FoodModal product={selectedFood} onClose={() => setSelectedFood(null)} />
+
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        closeOnClick
+        pauseOnHover
+        draggable
+      />
     </div>
   );
 }

@@ -5,6 +5,7 @@ import Kuchi5 from "../assets/img/Kuchi5.jpg";
 import Kuchi4 from "../assets/img/Kuchi4.jpg";
 
 
+
 export const kuchiData = [
     {id:1, title: "Salgados", category: "R$7.30 até R$14.45", banner: Kuchi6},
     {id:2, title: "Almoço", category: "R$18.30 até R$32.00", banner: Kuchi2},

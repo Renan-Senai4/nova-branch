@@ -22,3 +22,13 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+src/App.css
+src/App.jsx
+src/index.css
+src/components/GameCard.css
+src/components/GameCard.jsx
+src/components/Header.css
+src/components/Header.jsx
+src/components/Sidebar.css
+src/components/Sidebar.jsx
+src/data/games.js

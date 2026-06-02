@@ -2,12 +2,64 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>supernova</title>
+    <title>Kuchi</title>
+  
   </head>
+  
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+
+    <main id="site-main">
+      <div class="swiper-wrapper-outer">
+        <div class="swiper-container swiper">
+          <!-- seu swiper -->
+        </div>
+      </div>
+    </main>
+
+    <footer id="site-footer">
+      <div class="footer-inner">
+        <div class="footer-left">
+          <nav class="footer-links">
+            <a href="#">Sobre</a><a href="#">Contato</a><a href="#">Ajuda</a>
+          </nav>
+        </div>
+        <div class="footer-right">
+          <div class="footer-copy">© 2026 Minha Empresa</div>
+        </div>
+      </div>
+    </footer>
+      <style>
+      /* Reset/estrutura */
+      html,body{height:100%;margin:0;}
+      body{display:flex;flex-direction:column;min-height:100vh;font-family:system-ui,Arial,sans-serif;}
+
+      /* main cresce para empurrar footer */
+      #site-main{flex:1;padding:24px;box-sizing:border-box;}
+
+      /* caixa do footer */
+      #site-footer{
+        background:#3d2b10;color:#fff;
+        border-top:4px solid #793615;
+        width:100%;
+        box-sizing:border-box;
+      }
+      /* centra o conteúdo da caixa e limita largura */
+      .footer-inner{
+        max-width:1200px;padding:20px 24px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:16px;
+      }
+
+      /* estilos internos */
+      .footer-links a{color:#ffffff;text-decoration:none;margin-left:14px;}
+      .footer-links a:first-child{margin-left:0;}
+      .footer-copy{color:#ffffff;font-size:0.95rem;}
+
+      @media (max-width:640px){
+        .footer-inner{flex-direction:column;align-items:flex-start;}
+        .footer-links{margin-top:8px;}
+      }
+    </style>
   </body>
 </html>

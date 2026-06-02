@@ -1,11 +1,11 @@
-import { GameCard } from "./GameCard";
+import { FoodCard } from "./FoodCard";
 
-export function Dashboard({ filteredGames, onAddToFavorites, favorites }) {
+export function Dashboard({ filteredFood, onAddToFavorites, favorites }) {
   return (
     <div className="vortex-grid">
-      {filteredGames.length > 0 ? (
-        filteredGames.map((g) => (
-          <GameCard
+      {filteredFood.length > 0 ? (
+        filteredFood.map((g) => (
+          <FoodCard
             key={g.id}
             id={g.id}
             title={g.title}
