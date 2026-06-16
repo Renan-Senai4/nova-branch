@@ -1,52 +1,67 @@
 import "./Profile.css";
-import { User, Mail, Trophy, Clock, Hourglass, Paperclip } from "lucide-react";
+import {
+  User,
+  Mail,
+  Trophy,
+  Clock,
+  Hourglass,
+  Paperclip,
+  Divide,
+  Camera,
+  Save,
+} from "lucide-react";
+import { toast } from "react-toastify";
 
-export function Profile() {
+export function Profile({ user, setUser }) {
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setUser({ ...user, [name]: value });
+  };
+
+  const handleSave = () => {
+    //salva instantaneamente e dispara o Toast
+    toast.success("Perfil atualizado com sucesso! ", {
+      position: "top-right",
+      theme: "dark",
+    });
+  };
+
   return (
     <div className="profile-container">
       <div className="profile-header">
-        <div className="profile-avatar">
-          <User size={64} />
+        <div className="avatar-wrapper">
+          <img src={`https://unavatar.io/github/${user.name}`} alt="Avatar" />
+          <button className="edit-avatar">
+            <Camera size={16} />
+          </button>
         </div>
-        <div className="profile-info">
-          <h3>User</h3>
-          <p className="status">Status: Online</p>
-        </div>
+        <h2>Configurações de Conta</h2>
       </div>
 
-      <div className="profile-stats">
-        <div className="stat-card">
-          <Hourglass size={20} color="#ffe4a1" />
-          <div>
-            <p className="stat-label">Idade</p>
-            <p className="stat-value">24</p>
-          </div>
+      <div className="profile-form">
+        <div className="input-group">
+          <label>Nickname</label>
+          <input
+            type="text"
+            name="name"
+            value={user.name}
+            onChange={handleChange}
+          />
         </div>
-        <div className="stat-card">
-          <Paperclip size={20} color="#fbf1bd" />
-          <div>
-            <p className="stat-label">Pontos</p>
-            <p className="stat-value">67,12</p>
-          </div>
-        </div>
-      </div>
 
-      <div className="profile-details">
-        <h4>Informações Pessoais</h4>
-        <div className="detail-item">
-          <Mail size={18} />
-          <div>
-            <p className="label">Email</p>
-            <p>User@gmail.com</p>
-          </div>
+        <div className="inout-group">
+          <label>Nível Atual</label>
+          <input
+            type="number"
+            name="level"
+            value={user.level}
+            onChange={handleChange}
+          />
         </div>
-        <div className="detail-item">
-          <User size={18} />
-          <div>
-            <p className="label">Nome de Usuário</p>
-            <p>UserReal</p>
-          </div>
-        </div>
+
+        <button className="save-btn" onclick={handleSave}>
+          <Save size={18} /> Salvar Alterações
+        </button>
       </div>
     </div>
   );

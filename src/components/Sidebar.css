@@ -6,7 +6,7 @@
 
 .kuchi-sidebar{
     width: 250px;
-    background-color: #c4ae96;
+    background-color: #C64C4C;
     border-right: 1px solid #1e293b;
     padding: 20px;
 
@@ -30,7 +30,7 @@
 }
 
 .nav-item.active{
-    background-color: #d56d18;
+    background-color: #F7A069 ;
     color: white;
 }
 

@@ -1,5 +1,5 @@
 import "./Sidebar.css";
-import { LayoutDashboard, User } from 'lucide-react';
+import { LayoutDashboard, User, ShoppingCart } from 'lucide-react';
 
 export function Sidebar({ activeTab, setActiveTab }) {
     return (
@@ -13,7 +13,7 @@ export function Sidebar({ activeTab, setActiveTab }) {
 
                 <div className={`nav-item ${activeTab === 'favorites' ? 'active' : ''}`} onClick={() => setActiveTab('favorites')} >
 
-                    Carrinho</div>
+                      <ShoppingCart size={20} size={20} />Carrinho</div>
 
                 <div className={`nav-item ${activeTab === 'profile' ? 'active' : ''}`} onClick={() => setActiveTab('profile')} >
 

@@ -1,5 +1,5 @@
 .kuchi-card {
-  background-color: #fff1d5;
+  background-color: #C64C4C;
   border-radius: 12px;
   overflow: hidden;
   border: 1px solid #513c08;
@@ -20,7 +20,7 @@
 .play-btn {
   width: 100%;
   padding: 10px;
-  background: #382403;
+  background: #F7A069 ;
   color: white;
   border: none;
   border-radius: 8px;

@@ -1,103 +1,107 @@
 .modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.85);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-  backdrop-filter: blur(5px);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
 }
 
 .modal-content {
-  background: #c4AE96;
-  width: 90%;
-  max-width: 500px;
-  border-radius: 16px;
-  overflow: hidden;
-  position: relative;
-  border: 1px solid #334155;
-  animation: modalShow 0.3s ease-out;
+    background: #C64C4C;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid #334155;
+    animation: modalShow 0.3s ease-out;
 }
 
 @keyframes modalShow {
-  from {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 .modal-banner {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
 }
 
 .modal-body {
-  padding: 25px;
+    padding: 25px;
 }
 
 .modal-category {
-  color: #c0bfbd;
-  font-size: 12px;
-  font-weight: bold;
-  text-transform: uppercase;
+    color: #c0bfbd;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
 }
 
-.food-stats {
-  display: flex;
-  justify-content: space-between;
-  margin: 20px 0;
-  padding: 15px 0;
-  border-top: 1px solid #1e293b;
-  border-bottom: 1px solid #1e293b;
+.product-stats {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+    padding: 15px 0;
+    border-top: 1px solid #1e293b;
+    border-bottom: 1px solid #1e293b;
 }
 
 .stat {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 13px;
-  color: #ffffff;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: #ffffff;
 }
 
-.start-food-btn {
-  width: 100%;
-  padding: 14px;
-  background: #382403;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: 0.2s;
+/* button reset to avoid browser default styles interfering */
+.modal-content .modal-body .start-product-btn {
+    -webkit-appearance: none;
+    appearance: none;
+    -moz-appearance: none;
+    width: 100%;
+    padding: 12px 14px;
+    background: #F7A069 ;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    transition:
+        transform 0.12s ease,
+        background 0.12s ease;
 }
-
-.start-food-btn:hover {
-  background: #3B3B3B;
-  transform: translateY(-2px);
+.modal-content .modal-body .start-product-btn:hover {
+    background: #3b3b3b;
+    transform: translateY(-2px);
 }
-
 .close-btn {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: rgba(0, 0, 0, 0.5);
-  border: none;
-  color: white;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 10;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
 }

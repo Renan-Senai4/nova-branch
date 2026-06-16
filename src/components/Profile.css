@@ -1,122 +1,158 @@
+/* Profile.css - Estilização do Componente de Configurações de Conta Vortex_ */
+
 .profile-container {
-  max-width: 600px;
-  margin: 0 auto;
+  max-width: 650px;
+  margin: 20px auto 0 auto;
+  background-color: #020617; /* Fundo escuro idêntico à Sidebar */
+  border: 1px solid #1e293b;
+  border-radius: 12px;
+  padding: 35px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 0.4s ease-out;
 }
 
+/* Animação suave de entrada ao abrir a aba */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Cabeçalho do Perfil (Avatar + Título) */
 .profile-header {
   display: flex;
   align-items: center;
-  gap: 30px;
-  background: #df3308;
-  padding: 30px;
-  border-radius: 12px;
+  gap: 24px;
+  padding-bottom: 25px;
+  border-bottom: 1px solid #1e293b;
   margin-bottom: 30px;
-  border: 1px solid #df3308;
 }
 
-.profile-avatar {
-  width: 100px;
-  height: 100px;
-  background: linear-gradient(135deg, #ff5900, #f5fa00);
+.avatar-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.avatar-wrapper img {
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #7c3aed; /* Linha roxa decorativa ao redor da foto */
+  background-color: #0f172a;
+  box-shadow: 0 0 15px rgba(124, 58, 237, 0.25);
+}
+
+/* Botão da Câmera (Sobreposto ao avatar) */
+.edit-avatar {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: #7c3aed;
+  color: #ffffff;
+  border: 2px solid #020617;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
-  flex-shrink: 0;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
-.profile-info h3 {
-  font-size: 1.5rem;
-  margin-bottom: 5px;
-  color: rgb(255, 255, 255);
+.edit-avatar:hover {
+  background-color: #6d28d9;
+  transform: scale(1.05);
 }
 
-.profile-info .status {
-  color: #ffb7b7;
-  font-size: 0.9rem;
-  margin: 0;
-}
-
-.profile-stats {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  margin-bottom: 30px;
-}
-
-.stat-card {
-  background: #df2c08;
-  padding: 20px;
-  border-radius: 12px;
-  border: 1px solid #df2c08;
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  transition: 0.3s;
-}
-
-.stat-card:hover {
-  border-color: #f6f2fe;
-  transform: translateY(-2px);
-}
-
-.stat-card div {
-  display: flex;
-  flex-direction: column;
-}
-
-.stat-label {
-  font-size: 0.85rem;
+.profile-header h2 {
   color: #ffffff;
-  margin: 0;
-}
-
-.stat-value {
   font-size: 1.5rem;
-  font-weight: bold;
-  color: white;
+  font-weight: 600;
   margin: 0;
+  letter-spacing: -0.5px;
 }
 
-.profile-details {
-  background: #d91e0d;
-  padding: 25px;
-  border-radius: 12px;
-  border: 1px solid #d91e0d;
-}
-
-.profile-details h4 {
-  margin: 0 0 20px 0;
-  font-size: 1.1rem;
-  color: rgb(255, 255, 255);
-}
-
-.detail-item {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  padding: 15px 0;
-  border-bottom: 1px solid #ffb4b4;
-  color: #ffbcbc;
-}
-
-.detail-item:last-child {
-  border-bottom: none;
-}
-
-.detail-item div {
+/* Estrutura do Formulário e Inputs */
+.profile-form {
   display: flex;
   flex-direction: column;
+  gap: 24px;
 }
 
-.detail-item .label {
-  color: #ffa5a5;
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.input-group label {
+  color: #94a3b8; /* Tom cinza suave */
   font-size: 0.85rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.input-group input {
+  background-color: #0f172a; /* Fundo ligeiramente mais claro que o painel */
+  border: 1px solid #334155;
+  border-radius: 8px;
+  color: #ffffff;
+  padding: 12px 16px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  width: 100%;
+}
+
+/* Efeito de foco nos Inputs */
+.input-group input:focus {
+  outline: none;
+  border-color: #7c3aed; /* Borda Roxa ao focar */
+  box-shadow: 0 0 0 2px rgba(124, 58, 237, 0.15);
+}
+
+/* Remove as setas nativas do input do tipo "number" no Chrome/Firefox */
+.input-group input[type="number"] {
+  -moz-appearance: textfield;
+}
+.input-group input[type="number"]::-webkit-outer-spin-button,
+.input-group input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
   margin: 0;
 }
 
-.detail-item p {
-  margin: 0;
-  color: rgb(255, 255, 255);
+/* Botão Salvar Alterações */
+.save-btn {
+  background-color: #7c3aed;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 14px 24px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+  transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+  width: 100%;
+}
+
+.save-btn:hover {
+  background-color: #6d28d9;
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
+}
+
+.save-btn:active {
+  transform: scale(0.98); /* Pequeno efeito de clique */
 }
