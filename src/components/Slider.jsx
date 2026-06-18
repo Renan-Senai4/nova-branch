@@ -1,40 +1,41 @@
 import React from "react";
-import { Swiper } from "swiper/react";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 import {
   Navigation,
   Pagination,
-  Scrollbar,
-  A11y,
   Autoplay,
-  EffectFade,
+  EffectCoverflow,
 } from "swiper/modules";
 
 import "swiper/css";
-import "swiper/css/effect-fade";
+import "swiper/css/effect-coverflow";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "./slider.css";
 
-const Slider = ({ settings, children }) => {
+const Slider = ({ settings = {}, children }) => {
   return (
     <Swiper
-      modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay, EffectFade]}
-      effect="fade"
-      fadeEffect={{ crossFade: true }}
-      speed={1000}
-      loop={true}
-      centeredSlides={true}
+      effect="coverflow"
       grabCursor={true}
-      navigation={true}
-      pagination={{
-        clickable: true,
-        disableOnInteraction: false,
+      centeredSlides={true}
+      slidesPerView={"auto"}
+      coverflowEffect={{
+        rotate: 50,
+        stretch: 0,
+        depth: 100,
+        modifier: 1,
+        slideShadows: true,
       }}
+      pagination={{ clickable: true }}
+      navigation={true}
       autoplay={{
         delay: 3000,
         disableOnInteraction: false,
       }}
+      modules={[EffectCoverflow, Pagination, Navigation, Autoplay]}
+      className="mySwiper"
       {...settings}
     >
       {children}

@@ -1,36 +1,38 @@
 .container {
-  display: flex;
-  align-items: flex-start;
-  height: 100vh; /* permite que sticky alcance o fundo da viewport */
+display: flex;
+align-items: flex-start;
+/* remova height: 100vh; para permitir que position: sticky funcione corretamente */
 }
 
 .kuchi-sidebar{
-    width: 250px;
-    background-color: #C64C4C;
-    border-right: 1px solid #1e293b;
-    padding: 20px;
-
+width: 250px;
+background-color: #C64C4C;
+border-right: 1px solid #a44242;
+padding: 20px;
+position: sticky; /* adicionado /
+ top: 20px;        / adicionado: distância do topo quando "grudar" /
+align-self: flex-start; / adicionado para garantir comportamento em flex /
+height: fit-content; / adicionado para evitar expansão desnecessária */
 }
 
 .logo{
-    color: #ffffff;
-    margin-bottom: 40px;
-    font-size: 1.5rem;
+color: #ffffff;
+margin-bottom: 40px;
+font-size: 1.5rem;
 }
 
 .nav-item{
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 12px;
-    color: #ffffff;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: 0.3s;
+display: flex;
+align-items: center;
+gap: 12px;
+padding: 12px;
+color: #ffffff;
+border-radius: 8px;
+cursor: pointer;
+transition: 0.3s;
 }
 
 .nav-item.active{
-    background-color: #F7A069 ;
-    color: white;
+background-color: #F7A069 ;
+color: white;
 }
-
