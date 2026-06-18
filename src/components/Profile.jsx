@@ -50,7 +50,7 @@ export function Profile({ user, setUser }) {
         </div>
 
         <div className="inout-group">
-          <label>Nível Atual</label>
+          <label>Idade</label>
           <input
             type="number"
             name="level"
