@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Sidebar } from "./components/Sidebar";
-import { Header } from "./components/header";
+import { Header } from "./components/Header";
 import { kuchiData } from "./data/games.js";
 import { FoodCard } from "./components/FoodCard.jsx";
 import { FoodModal } from "./components/FoodModal.jsx";
